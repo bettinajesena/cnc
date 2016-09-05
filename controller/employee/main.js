@@ -1,0 +1,189 @@
+	populate_table_main();
+
+
+
+
+  var table_main = $('#table_main').dataTable({
+    "aoColumnDefs": [ { "bSortable": false, "aTargets": [] } ],
+    "aaSorting": []
+  });  //Initialize the datatable
+
+function populate_table_main(){ 
+	//ajax now
+	$.ajax ({
+	  type: "POST",
+	  url: "../../model/employee/populate_table_main.php",
+	  dataType: 'json',      
+	  cache: false,
+	  success: function(s)
+	  {
+	    table_main.fnClearTable();      
+	    for(var i = 0; i < s.length; i++) 
+	    { 
+	      table_main.fnAddData
+	      ([
+	        s[i][1],s[i][2],s[i][3],s[i][4],s[i][5],
+	        '<button data-toggle="tooltip" onclick="employee_row_view(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-warning " title="VIEW /Edit"> <i class="fa fa-eye"></i></button>',      	        
+	        '<button data-toggle="tooltip" onclick="employee_row_del(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-danger" title="Delete"> <i class="fa fa-trash"></i> </button>', 
+	      ],false); 
+	      table_main.fnDraw();
+
+	    }       
+	  }  
+	}); 
+	//ajax end  
+} //
+
+function showLicense(get){
+	$('#f_license_div').removeClass('has-error');      	
+	if(get=='vet'){$('#license_div').css('display','block');}
+	else{ $('#license_div').css('display','none'); }
+}
+
+function reset(){
+	$('#btn_save').val('create');
+	$('#f_name').val('');
+	$('#f_cn').val('');
+	$('#f_address').val('');
+	$('#f_job').val('');
+	$('#f_license').val('');
+
+   
+	$('#f_name_div').removeClass('has-error');     
+	$('#f_cn_div').removeClass('has-error');     
+	$('#f_address_div').removeClass('has-error');
+	$('#f_job_div').removeClass('has-error'); 
+	$('#f_license_div').removeClass('has-error'); 
+	
+}
+
+function validate_form(){
+	err = false;
+	var x= $('#f_cn').val();
+
+	if($('#f_name').val()==''){
+		err = true;
+		$('#f_name_div').addClass('has-error');
+	}
+	else
+		$('#f_name_div').removeClass('has-error');		
+
+	if($('#f_cn').val()==''){
+		err = true;
+		$('#f_cn_div').addClass('has-error');
+				
+	}
+	else if(! /^[0-9]{11}$/.test(x)){
+		err = true;
+		$('#f_cn_div').addClass('has-error');
+				
+	}
+	else
+		$('#f_cn_div').removeClass('has-error');
+
+	if($('#f_address').val()==''){
+		err = true;
+		$('#f_address_div').addClass('has-error');
+	}
+	else
+		$('#f_address_div').removeClass('has-error');
+
+	if($('#f_job').val()==''){
+		err = true;
+		$('#f_job_div').addClass('has-error');
+	}
+	else
+		$('#f_job_div').removeClass('has-error');
+
+
+
+	return err;				
+}
+
+function employee_row_del(id){
+
+  var choice = confirm("Are you sure you want to Delete?");
+  if(choice==true){
+  			//ajax now
+			$.ajax ({
+			  type: "POST",
+			  url: "../../model/employee/delete.php",
+			  data: 'id='+id,
+			  dataType: 'json',      
+			  cache: false,
+			  success: function(s){	}  
+			}); 
+		  	alert('Success: Deleted ');
+		  	reset();
+		  	populate_table_main();			
+  }		
+}
+
+function employee_row_view(id){
+	reset();
+		//ajax now
+	$.ajax ({
+	  type: "POST",
+	  url: "../../model/employee/fetch.php",
+	  data: 'id='+id,
+	  dataType: 'json',      
+	  cache: false,
+	  success: function(s){		
+	  	$('#btn_save').val(id);
+
+	  	$('#f_name').val(s[0][1]);	$('#f_cn').val(s[0][2]);	$('#f_address').val(s[0][3]);
+	  	$('#f_job').val(s[0][4]); $('#f_license').val(s[0][5]);	
+
+	  }  
+	}); 
+	//ajax end
+}
+
+$('#btn_reset').click(function(){ reset(); })
+
+$('#btn_save').click(function(){
+
+		if(validate_form()==true){}
+		else{
+
+			var employee_name = $('#f_name').val();
+			var employee_cn = $('#f_cn').val();
+			var employee_address = $('#f_address').val();
+			var employee_job = $('#f_job').val();
+			var employee_license = $('#f_license').val();
+			
+			var dataString = 'name='+employee_name+'&contact_no='+employee_cn+'&address='+employee_address+'&job='+employee_job+'&license='+employee_license;
+			if(this.value=='create'){ //CREATE MODE
+				//ajax now
+				$.ajax ({
+				  type: "POST",
+				  url: "../../model/employee/create.php",
+				  data: dataString,
+				  dataType: 'json',      
+				  cache: false,
+				  success: function(s){}  
+				}); 
+				//ajax end  
+			  	alert('Saved');
+			  	reset();
+			  	populate_table_main();			
+			}
+			else{ //UPDATE MODE
+				var id = this.value;
+				//ajax now
+				$.ajax ({
+				  type: "POST",
+				  url: "../../model/employee/update.php",
+			  data: dataString+'&id='+id,
+			  dataType: 'json',      
+			  cache: false,
+			  success: function(s){}  
+			}); 
+			//ajax end  
+		  	alert('Updated');
+		  	reset();
+		  	populate_table_main();						
+		}
+	}
+
+})

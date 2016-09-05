@@ -1,0 +1,39 @@
+<hr>
+
+<div class="row" style="margin-bottom:5px"> <!-- ROW 1 -->
+
+  <div class="col-sm-3 col-xs-12" id="f_name_div" class='form-group'> 
+    <label>Name <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></label> <!-- Prod_Name -->
+    <input type="text" class="form-control" id="f_name" required>
+  </div> 
+
+  <div class="col-sm-3 col-xs-12" id="f_cn_div" class='form-group'> 
+    <label>Contact No.<span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></label> <!-- Prod_Name -->
+    <input type="text" class="form-control" id="f_cn" required>
+  </div>              
+
+  <div class="col-sm-3 col-xs-12" id="f_address_div" class='form-group'> 
+    <label>Address<span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></label> <!-- Prod_Name -->
+    <input type="text" class="form-control" id="f_address" required>
+  </div>
+   
+  <div class="col-sm-3 col-xs-12" id="f_job_div" class='form-group'> 
+    <label>Job <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></span></label> 
+    <select type="text" class="form-control " id="f_job" required onchange="showLicense(this.value)">
+      <option val="none"> -- SELECT JOB --</option>
+      <option value="vet">Vet</option>
+      <option value="aide">Vet Aide</option>      
+    </select>
+  </div>   
+
+  <div id="license_div" style="display:none">
+<div class="col-sm-3 col-xs-12" id="f_license_div" class='form-group'> 
+    <label>License<span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></label> <!-- Prod_Name -->
+    <input type="text" class="form-control" id="f_license" required>
+  </div>
+    
+   </div>
+   
+  
+
+</div> <!-- /.row -->   

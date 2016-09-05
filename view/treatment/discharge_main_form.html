@@ -1,0 +1,57 @@
+<hr>
+
+<div class="row" style="margin-bottom:5px"> <!-- ROW 1 -->
+
+  <ul class="nav nav-tabs">
+  <li><a href="main.php">Treatment</a></li>
+  <li><a href="admission_main.php">Admission</a></li>
+  <li class="active"><a href="#">Discharge</a></li>
+
+  <div class=" col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+            <div class="container-fluid">
+            <div class="col-sm-2 col-xs-12" id="f_patientname_div" class='form-group'> 
+                <label>Patient Name<span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></span></label>
+                <select type="text" class="form-control " id="f_patientname" required>
+                  <option value="none"> -- SELECT -- </option>
+                </select>
+              </div>
+             <div class="col-sm-3 col-xs-12" id="f_dateofdischarge_div" class='form-group'> 
+                <label>Date of Discharge<span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></span></label> 
+                <input type="date" class="form-control " id="f_dateofdischarge" required>
+              </div> 
+             <div class="col-sm-5 col-xs-12" id="f_dischargediagnosis_div" class='form-group'> 
+              <label>Discharge Diagnosis</label> 
+              <textarea rows="2" style="resize:none" class="form-control " id="f_dischargediagnosis"></textarea>
+            </div> 
+            <div class="col-sm-5 col-xs-12" id="f_conditionondischarge_div" class='form-group'> 
+              <label>Condition on Discharge</label> 
+              <textarea rows="2" style="resize:none" class="form-control " id="f_conditionondischarge"></textarea>
+            </div> 
+            <div class="col-sm-2 col-xs-12" id="f_dischargeto_div" class='form-group'> 
+              <label>Discharge to<span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></span></label>
+              <select type="text" class="form-control " id="f_dischargeto" required>
+                <option value="none"> -- SELECT -- </option>
+              </select>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="">Follow up required</label>
+            </div>
+            <div class="col-sm-3 col-xs-12" id="f_nextappointmentdate_div" class='form-group'> 
+                <label>Next Appointment Date<span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></span></label> 
+                <input type="date" class="form-control " id="f_nextappointmentdate" required>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+   </ul>
+
+
+
+</div><!--row-->
+
+

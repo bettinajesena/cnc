@@ -1,0 +1,105 @@
+<hr>
+<?php
+$id = uniqid('CL');
+?>
+
+<input type="hidden" name="client_id" id="client_id" value="<?php echo "$id"?>" >
+
+<div class="row" style="margin-bottom:5px"> <!-- ROW 1 -->
+  
+  <div class="col-sm-3 col-xs-12" id="f_name_div" class='form-group'> 
+    <label>Name <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></label> <!-- Prod_Name -->
+    <input type="text" class="form-control" id="f_name" required>
+  </div>               
+
+  <div class="col-sm-3 col-xs-12" id="f_contact_div" class='form-group'> 
+    <label>Contact <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></label> <!-- Prod_Name -->
+    <input type="text" class="form-control" id="f_contact" required>
+  </div> 
+           
+
+  <div class="col-sm-3 col-xs-12" id="f_bdate_div" class='form-group'> 
+    <label>Birthdate <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></label> <!-- Prod_Name -->
+    <input type="date" class="form-control" id="f_bdate" required>
+  </div>             
+
+  <div class="col-sm-2 col-xs-12" id="f_gender_div" class='form-group'> 
+    <label>Gender <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></label> <!-- Prod_Name -->
+    <select class="form-control" id="f_gender" required>
+      <option value="none">--SELECT--</option>
+      <option value="male">MALE</option>
+      <option value="female">FEMALE</option>
+    </select>
+  </div>                 
+
+
+
+</div> <!-- /.row -->   
+
+<div class="row" style="margin-bottom:5px"> <!-- ROW 1 -->
+  
+  <div class="col-sm-3 col-xs-12" id="f_address_div" class='form-group'> 
+    <label>Address <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></label> <!-- Prod_Name -->
+    <textarea type="text" class="form-control" id="f_address" style="resize:none" required></textarea>
+  </div>           
+   
+  
+
+</div> <!-- /.row -->   
+
+<hr>
+
+<div class="row" style="margin-bottom:5px"> <!-- ROW 1 -->
+  
+  <div class="col-sm-3 col-xs-12" id="f_petname_div" class='form-group'> 
+    <label>Pet Name <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></span></label> <!-- Prod_Name -->
+    <input type="text" class="form-control " id="f_petname" required>
+  </div>  
+
+
+  <div class="col-sm-3 col-xs-12" id="f_species_div" class='form-group'> 
+    <label>Species <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></span></label> <!-- Prod_Name -->
+    <select type="text" class="form-control " onchange="getBreed(this.value)" id="f_species" required>
+      <option value="none"> -- SEARCH Species -- </option>
+    </select>
+  </div>
+
+  <div class="col-sm-3 col-xs-12" id="f_breed_div" class='form-group'> 
+    <label>Breed <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></span></label> <!-- Prod_Name -->
+    <select type="text" class="form-control " id="f_breed" required>
+      <option value="none"> -- SEARCH Breed -- </option>
+    </select>
+  </div>              
+
+  <div class="col-sm-3 col-xs-12" id="f_color_div" class='form-group'> 
+    <label>Color <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></span></label> 
+    <input type="text" class="form-control " id="f_color" required>
+  </div>  
+  </div>
+
+   <!-- /.row -->   
+
+<div class="row">
+
+  <div class="col-sm-3 col-xs-12" id="f_markings_div" class='form-group'> 
+    <label>Markings <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></span></label> 
+    <input type="text" class="form-control " id="f_markings" required>
+  </div>    
+
+
+  <div class="col-sm-3 col-xs-12" id="f_birthdate_div" class='form-group'> 
+    <label>Birthdate <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></span></label> 
+    <input type="date" class="form-control " id="f_birthdate" required>
+  </div>    
+
+    <div class="col-sm-2 col-xs-12" id="f_sex_div" class='form-group'> 
+    <label>Gender <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:orange"></label> <!-- Prod_Name -->
+    <select class="form-control" id="f_sex" required>
+      <option value="none">--SELECT--</option>
+      <option value="male">MALE</option>
+      <option value="female">FEMALE</option>
+    </select>
+  </div>                    
+
+</div>
+ 
